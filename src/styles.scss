@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'avalanche-css/avalanche';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* styles.scss */
+
+html {
+	font-size: 14px; /* Adjust this to scale components. Default is 16px. */
+}
+
+/* Optionally, adjust the font size for mat-icons */
+.mat-icon {
+	font-size: 18px;
+	height: 18px;
+	width: 18px;
+}
+
+
