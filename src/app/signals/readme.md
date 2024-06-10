@@ -1,0 +1,1 @@
+Components are created based on course https://angular-signals.dev/
