@@ -18,24 +18,38 @@ import { MatDashboardComponent } from './mat-dashboard/mat-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MainPageComponent } from './signals/main-page/main-page.component';
+import { MaterialModule } from './MaterialModule';
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppComponent,
         WeatherForecastComponent,
-        MatDashboardComponent
+        MatDashboardComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatGridListModule,
-        MatCardModule,
-        MatMenuModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        MaterialModule
+    ],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
+})
 export class AppModule { }
+
+
+export const materialModules = [
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule
+];
+
