@@ -39,17 +39,3 @@ import { MaterialModule } from './MaterialModule';
 export class AppModule { }
 
 
-export const materialModules = [
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule
-];
-

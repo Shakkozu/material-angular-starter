@@ -5,6 +5,7 @@ import { TaskListComponent } from '../task-list/task-list.component';
 import { ComputedSignalComponent } from '../computed-signal/computed-signal.component';
 import { CommonModule } from '@angular/common';
 import { ComputedSignalHomeworkComponent } from '../computed-signal-homework/computed-signal-homework.component';
+import { BranchingComponent } from '../branching/branching.component';
 
 @Component({
   selector: 'app-main-page',
@@ -14,6 +15,7 @@ import { ComputedSignalHomeworkComponent } from '../computed-signal-homework/com
     MaterialModule,
     ComputedSignalComponent,
     ComputedSignalHomeworkComponent,
+    BranchingComponent,
     TaskListComponent],
   template: `
   <h1>Signals</h1>
@@ -35,6 +37,12 @@ import { ComputedSignalHomeworkComponent } from '../computed-signal-homework/com
   
   <div class="m-8">
     <app-computed-signal-homework></app-computed-signal-homework>
+    
+    </div>
+  <mat-divider></mat-divider>
+  
+  <div class="m-8">
+    <app-branching></app-branching>
     
     </div>
   <mat-divider></mat-divider>
