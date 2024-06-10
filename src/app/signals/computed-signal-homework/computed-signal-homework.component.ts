@@ -11,15 +11,31 @@ import { MaterialModule } from '../../MaterialModule';
     <p>Value: {{ value() }}</p>
 <p> {{ isPrime() }} </p>
 
-<button mat-raised-button (click)="reset()">reset</button>
+<button [ngClass]="{'green-400': true}" mat-raised-button (click)="reset()">reset</button>
 <button mat-raised-button (click)="add()">add 1</button>
 <button mat-raised-button (click)="multiply()">multiply by 2</button>
+
+<p>Adding 1 to value will change isPrime: {{ incrementingCounterResultsInPrimeNumber() }}</p>
+<p>Multiplying value by 2 will change isPrime: {{ multiplyingValueResultsInPrimeNumber() }}</p>
+
+<p>Incrementing counter will modify isPrime flag: {{ incrementingCounterWillChangeIsPrimeState() }}</p>
   `
 })
 export class ComputedSignalHomeworkComponent {
 
   value = signal(1);
   isPrime = computed<boolean>(() => isPrime(this.value()));
+  incrementingCounterResultsInPrimeNumber = computed<boolean>(() => isPrime(this.value() + 1));
+  multiplyingValueResultsInPrimeNumber = computed<boolean>(() => isPrime(this.value() * 2));
+
+  incrementingCounterWillChangeIsPrimeState = computed<boolean>(() => {
+    console.log('incrementingCounterWillChangeIsPrimeState');
+    const currentValue = this.isPrime();
+    const afterIncrement = this.incrementingCounterResultsInPrimeNumber();
+    return currentValue !== afterIncrement;
+  });
+
+
 
   add() {
     this.value.update(v => v + 1);
@@ -31,10 +47,7 @@ export class ComputedSignalHomeworkComponent {
 
   reset() {
     this.value.set(1);
-  
   }
-
-
 }
 
 
