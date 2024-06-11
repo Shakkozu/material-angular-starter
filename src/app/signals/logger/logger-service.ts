@@ -1,4 +1,4 @@
-import { Injectable, signal } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Log } from "./logger.component";
 import { BehaviorSubject, Observable } from "rxjs";
 
@@ -14,7 +14,7 @@ export class LoggerService {
 			time: new Date(),
 			message: message
 		};
-		this.logs.next([...this.logs.value, log]);
+	this.logs.next([...this.logs.value, log]);
 	}
 
 	getLogs(): Observable<Log[]> {
