@@ -6,6 +6,7 @@ import { ComputedSignalComponent } from '../computed-signal/computed-signal.comp
 import { CommonModule } from '@angular/common';
 import { ComputedSignalHomeworkComponent } from '../computed-signal-homework/computed-signal-homework.component';
 import { BranchingComponent } from '../branching/branching.component';
+import { EffectsExampleComponent } from '../effects-example/effects-example.component';
 
 @Component({
   selector: 'app-main-page',
@@ -16,6 +17,7 @@ import { BranchingComponent } from '../branching/branching.component';
     ComputedSignalComponent,
     ComputedSignalHomeworkComponent,
     BranchingComponent,
+    EffectsExampleComponent,
     TaskListComponent],
   template: `
   <h1>Signals</h1>
@@ -43,7 +45,11 @@ import { BranchingComponent } from '../branching/branching.component';
   
   <div class="m-8">
     <app-branching></app-branching>
-    
+    </div>
+  <mat-divider></mat-divider>
+  
+  <div class="m-8">
+    <app-effects-example></app-effects-example>
     </div>
   <mat-divider></mat-divider>
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { MaterialModule } from '../../MaterialModule';
 
 @Component({
@@ -12,6 +12,7 @@ import { MaterialModule } from '../../MaterialModule';
   <div class="">
 
     <section class="done">
+      <p>New tasks: {{doneTaskCount()}}</p>
       <ng-container *ngFor="let task of doneTasks()">
         <article  class="row p-4 my-4 rounded-xl bg-green-300" *ngIf="task.state === TaskState.Done">
           {{task.title}}
@@ -20,6 +21,7 @@ import { MaterialModule } from '../../MaterialModule';
       </ng-container>
     </section>
     <section class="new w-64">
+      <p>New tasks count: {{newTaskCount()}}</p>
       <div class="row p-4 my-4 rounded-xl bg-blue-300" *ngFor="let task of newTasks()">
           <article class="todo-item">
             {{task.title}}
@@ -35,6 +37,8 @@ import { MaterialModule } from '../../MaterialModule';
 export class TaskListComponent {
   readonly TaskState = TaskState;
 
+  doneTaskCount = computed(() => this.doneTasks().length);
+  newTaskCount = computed(() => this.newTasks().length);
   doneTasks = signal<Task[]>([]);
   newTasks = signal<Task[]>([
     {
