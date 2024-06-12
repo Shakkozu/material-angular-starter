@@ -10,6 +10,7 @@ import { LoggerService } from '../logger/logger-service';
   imports: [CommonModule, MaterialModule, LoggerComponent],
   template: `
     <p>Value: {{ counterValue() }}</p>
+    <p>IsLogged: {{ isLogged() }}</p>
 <p> {{ isPrime() }} </p>
 
 <button mat-raised-button (click)="reset()">reset</button>
@@ -27,6 +28,7 @@ export class EffectsExampleComponent {
   });
   private anotherMethodOfCreatingInjector = inject(Injector);
   private loggingEffect!: EffectRef;
+  isLogged = signal<boolean>(false);
 
 
 
@@ -70,6 +72,7 @@ export class EffectsExampleComponent {
         const task = setTimeout(() => {
           this.logger.log(`Counter value is: ${ value }`)
         }, 3000);
+        this.isLogged.set(true);
 
         /*
         The onCleanup function is not only called on destroy but also on every new incoming value.
@@ -84,12 +87,17 @@ export class EffectsExampleComponent {
           clearTimeout(task);
         });
       },
-      { injector: this.anotherMethodOfCreatingInjector }
+      {
+        injector: this.anotherMethodOfCreatingInjector,
+        allowSignalWrites: true
+       }
     );
   }
 
   disableLogging() {
-    this.loggingEffect.destroy();
+    if(this.loggingEffect)
+      this.loggingEffect.destroy();
+    this.isLogged.set(false);
 
   }
 
