@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ComputedSignalHomeworkComponent } from '../computed-signal-homework/computed-signal-homework.component';
 import { BranchingComponent } from '../branching/branching.component';
 import { EffectsExampleComponent } from '../effects-example/effects-example.component';
+import { UntrackedSignalInEffectComponent } from '../../untracked-signal-in-effect/untracked-signal-in-effect.component';
 
 @Component({
   selector: 'app-main-page',
@@ -18,6 +19,7 @@ import { EffectsExampleComponent } from '../effects-example/effects-example.comp
     ComputedSignalHomeworkComponent,
     BranchingComponent,
     EffectsExampleComponent,
+    UntrackedSignalInEffectComponent,
     TaskListComponent],
   template: `
   <h1>Signals</h1>
@@ -50,6 +52,12 @@ import { EffectsExampleComponent } from '../effects-example/effects-example.comp
   
   <div class="m-8">
     <app-effects-example></app-effects-example>
+    </div>
+  <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
+  
+  <div class="m-8">
+    <app-untracked-signal-in-effect/>
     </div>
   <mat-divider></mat-divider>
 
