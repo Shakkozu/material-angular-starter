@@ -1,5 +1,5 @@
 import { Component, isSignal, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { LoggerService } from '../../logger/logger-service';
 import { NumberService } from './number.service';
 import { LoggerComponent } from '../../logger/logger.component';
@@ -18,6 +18,7 @@ import { debounceTime } from 'rxjs';
 <button mat-raised-button (click)="reset()">reset</button>
 <button mat-raised-button (click)="add()">add 1</button>
 <button mat-raised-button (click)="multiply()">multiply by 2</button>
+<app-logger/>
   `
 })
 export class CounterWithObservablesComponent {
@@ -31,7 +32,21 @@ export class CounterWithObservablesComponent {
   readonly isIsPrime$Signal = isSignal(this.isPrime$);
   readonly isIsPrimeSignal = isSignal(this.isPrime);
   
-  constructor (private numberService: NumberService) { }
+  constructor (private numberService: NumberService,
+    private loggerService: LoggerService) {
+    this.loggerService.register(this.value);
+    const signalProperty = signal(10);
+
+    signalProperty.set(20);
+    setTimeout(() => {
+      signalProperty.set(30);
+      
+    }, 500);
+    setTimeout(() => {
+      signalProperty.set(40);
+      
+    }, 1000);
+  }
     
     reset() {
       this.value.set(0);

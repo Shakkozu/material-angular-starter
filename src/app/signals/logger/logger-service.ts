@@ -1,6 +1,7 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Signal } from "@angular/core";
 import { Log } from "./logger.component";
 import { BehaviorSubject, Observable } from "rxjs";
+import { toObservable } from "@angular/core/rxjs-interop";
 
 @Injectable({
 	providedIn: 'root'
@@ -19,5 +20,12 @@ export class LoggerService {
 
 	getLogs(): Observable<Log[]> {
 		return this.logs.asObservable();
+	}
+
+	register(value: Signal<number>) {
+		const asObservable = toObservable(value);
+		asObservable.subscribe((v) => {
+			this.log(`Value: ${ v }`);
+		});
 	}
 }
