@@ -8,6 +8,7 @@ import { ComputedSignalHomeworkComponent } from '../computed-signal-homework/com
 import { BranchingComponent } from '../branching/branching.component';
 import { EffectsExampleComponent } from '../effects-example/effects-example.component';
 import { UntrackedSignalInEffectComponent } from '../../untracked-signal-in-effect/untracked-signal-in-effect.component';
+import { CounterWithObservablesComponent } from '../rxjs/counter-with-observables/counter-with-observables.component';
 
 @Component({
   selector: 'app-main-page',
@@ -20,6 +21,7 @@ import { UntrackedSignalInEffectComponent } from '../../untracked-signal-in-effe
     BranchingComponent,
     EffectsExampleComponent,
     UntrackedSignalInEffectComponent,
+    CounterWithObservablesComponent,
     TaskListComponent],
   template: `
   <h1>Signals</h1>
@@ -58,6 +60,12 @@ import { UntrackedSignalInEffectComponent } from '../../untracked-signal-in-effe
   
   <div class="m-8">
     <app-untracked-signal-in-effect/>
+    </div>
+  <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
+  
+  <div class="m-8">
+    <app-counter-with-observables/>
     </div>
   <mat-divider></mat-divider>
 
