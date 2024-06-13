@@ -1,5 +1,6 @@
 import { Inject, Injectable, Signal, effect } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { toObservable } from "@angular/core/rxjs-interop";
+import { Observable, map, of, tap } from "rxjs";
 
 @Injectable({
 	providedIn: 'root'
@@ -7,13 +8,11 @@ import { Observable, of } from "rxjs";
 export class NumberService {
 
 	public isPrime(number: Signal<number>): Observable<boolean> {
-		return new Observable<boolean>(subscriber => {
-			effect(() => {
-				subscriber.next(this.isPrimeFunc(number()));
-			}, {
-				allowSignalWrites: true
-			});
-		});
+		const observable = toObservable(number);
+		return observable.pipe(
+			map(num => this.isPrimeFunc(num)
+			)
+		);
 	}
 
 	private isPrimeFunc(num: number): boolean {
