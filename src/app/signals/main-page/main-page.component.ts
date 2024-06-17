@@ -9,6 +9,7 @@ import { BranchingComponent } from '../branching/branching.component';
 import { EffectsExampleComponent } from '../effects-example/effects-example.component';
 import { UntrackedSignalInEffectComponent } from '../../untracked-signal-in-effect/untracked-signal-in-effect.component';
 import { CounterWithObservablesComponent } from '../rxjs/counter-with-observables/counter-with-observables.component';
+import { ObservablesErrorHandlingComponent } from '../observables-error-handling/observables-error-handling.component';
 
 @Component({
   selector: 'app-main-page',
@@ -22,9 +23,12 @@ import { CounterWithObservablesComponent } from '../rxjs/counter-with-observable
     EffectsExampleComponent,
     UntrackedSignalInEffectComponent,
     CounterWithObservablesComponent,
+    ObservablesErrorHandlingComponent,
     TaskListComponent],
   template: `
   <h1>Signals</h1>
+  <mat-divider></mat-divider>
+  <app-observables-error-handling/>
   <mat-divider></mat-divider>
   <div class="m-8">
     <app-writable-signal></app-writable-signal>
