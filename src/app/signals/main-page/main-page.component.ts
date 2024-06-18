@@ -10,6 +10,7 @@ import { EffectsExampleComponent } from '../effects-example/effects-example.comp
 import { UntrackedSignalInEffectComponent } from '../../untracked-signal-in-effect/untracked-signal-in-effect.component';
 import { CounterWithObservablesComponent } from '../rxjs/counter-with-observables/counter-with-observables.component';
 import { ObservablesErrorHandlingComponent } from '../observables-error-handling/observables-error-handling.component';
+import { RxjsInteroperabilityExcersiseComponent } from '../rxjs-interoperability-excersise/rxjs-interoperability-excersise.component';
 
 @Component({
   selector: 'app-main-page',
@@ -24,10 +25,13 @@ import { ObservablesErrorHandlingComponent } from '../observables-error-handling
     UntrackedSignalInEffectComponent,
     CounterWithObservablesComponent,
     ObservablesErrorHandlingComponent,
+    RxjsInteroperabilityExcersiseComponent,
     TaskListComponent],
   template: `
   <h1>Signals</h1>
   <mat-divider></mat-divider>
+  <app-rxjs-interoperability-excersise/>
+  <mat-divider/>
   <app-observables-error-handling/>
   <mat-divider></mat-divider>
   <div class="m-8">
